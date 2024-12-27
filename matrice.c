@@ -18,6 +18,7 @@ void insertionSortMatrice(char matrice[][100], int n, int* numComparisons, int* 
             (*numPermutations)++;
         }
         strcpy(matrice[j + 1], temp);
+        (*numPermutations)++;
         displayMatrice(matrice, n); // Display matrix after each iteration for visualization
         printf("\n");
     }
