@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "vectorSort.h"
+#include <stdlib.h>
 
 void printVector(int *vector, int vectorSize)
 {
@@ -25,105 +26,111 @@ void printnbCompAndnbPerm(int nbComb, int nbPerm)
     printf("The number of permutations is: %d\n", nbPerm);
 }
 
-void selectionSort(int *vector, int vectorSize)
+void selectionSortVector(int *vector, int vectorSize)
 {
-    // Initially the number of comparisons and permutations is 0
+    // Number of comparisons and swaps are tracked here
     int nbComp, nbPerm;
     nbComp = nbPerm = 0;
 
-    printVector(vector, vectorSize);
     for (size_t i = 0; i < vectorSize - 1; i++)
     {
         printf("Iteration number: %ld | ", i + 1);
 
-        int minIndex = i;
+        int minIndex = i; // Assume the first unsorted element is the smallest
         for (size_t j = i + 1; j < vectorSize; j++)
         {
-            // If the element at the currect index is smaller then the minimum, we update the minIdex
+            // Update minIndex if a smaller element is found
             if (vector[j] < vector[minIndex])
             {
                 minIndex = j;
             }
-            nbComp++;
+            nbComp++; // Count the comparison
         }
+        // Swap the smallest found element with the current position
         swap(vector + i, vector + minIndex);
-        nbPerm++;
-        printVector(vector, vectorSize);
+        nbPerm++;                        // Count the swap
+        printVector(vector, vectorSize); // Print the vector after each iteration
     }
 
+    // Print the total number of comparisons and swaps
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("\n");
 }
 
-void bubbleSort(int *vector, int vectorSize)
+void bubbleSortVector(int *vector, int vectorSize)
 {
-
-    // Initially the number of comparisons and permutations is 0
+    // Track number of comparisons and swaps
     int nbComp, nbPerm;
     nbComp = nbPerm = 0;
 
-    printVector(vector, vectorSize);
     for (size_t i = 0; i < vectorSize; i++)
     {
         printf("Iteration number: %ld | ", i + 1);
 
-        bool sorted = true;
+        bool sorted = true; // Check if the array is already sorted
         for (size_t j = 0; j < vectorSize - i - 1; j++)
         {
+            // Swap if elements are in the wrong order
             if (vector[j] > vector[j + 1])
             {
                 swap(vector + j + 1, vector + j);
-                nbPerm++;
-                sorted = false;
+                nbPerm++;       // Count the swap
+                sorted = false; // Array is not sorted yet
             }
-            nbComp++;
+            nbComp++; // Count the comparison
         }
-        printVector(vector, vectorSize);
-        if (sorted)
+        printVector(vector, vectorSize); // Print after each iteration
+        if (sorted)                      // Stop early if the array is sorted
         {
             break;
         }
     }
+
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("\n");
 }
 
-void insertionSort(int *vector, int vectorSize)
+void insertionSortVector(int *vector, int vectorSize)
 {
-    // Initially the number of comparisons and permutations is 0
+    // Track comparisons and swaps
     int nbComp, nbPerm;
     nbComp = nbPerm = 0;
 
-    printVector(vector, vectorSize);
     for (size_t i = 1; i < vectorSize; i++)
     {
         printf("Iteration number: %ld | ", i);
 
         int pos = i;
-        int temp = vector[i];
+        int temp = vector[i]; // Store the current element temporarily
         for (int j = i - 1; j >= 0; j--)
         {
+            // Shift elements until the correct position is found
             if (vector[i] < vector[j])
             {
                 pos = j;
             }
-            nbComp++;
+            nbComp++; // Count comparisons
         }
 
+        // Shift elements to make space for the current element
         for (int k = i - 1; k >= pos; k--)
         {
             vector[k + 1] = vector[k];
         }
 
-        vector[pos] = temp;
-        nbPerm++;
+        vector[pos] = temp; // Place the element in the correct position
+        nbPerm++;           // Count the placement as a swap
         printVector(vector, vectorSize);
     }
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("\n");
 }
 
-void merge(int *arr, int start, int end, int originalVectorSize)
+void mergeVector(int *arr, int start, int end, int originalVectorSize)
 {
-    int mid = (start + end) / 2;
+    int mid = (start + end) / 2; // Find the middle point
 
+    // Create left and right subarrays
     int leftvectorlenght = mid - start + 1;
     int leftvector[leftvectorlenght];
     for (size_t i = 0; i < leftvectorlenght; i++)
@@ -138,6 +145,7 @@ void merge(int *arr, int start, int end, int originalVectorSize)
         rightvector[i] = arr[mid + i + 1];
     }
 
+    // Merge the two sorted halves
     int i, j, k;
     i = j = 0;
     k = start;
@@ -147,16 +155,17 @@ void merge(int *arr, int start, int end, int originalVectorSize)
         if (leftvector[i] <= rightvector[j])
         {
             arr[k] = leftvector[i];
-            i += 1;
+            i++;
         }
         else
         {
             arr[k] = rightvector[j];
-            j += 1;
+            j++;
         }
-        k += 1;
+        k++;
     }
 
+    // Add remaining elements from left and right arrays
     while (j < rightvectorlenght)
     {
         arr[k] = rightvector[j];
@@ -171,52 +180,56 @@ void merge(int *arr, int start, int end, int originalVectorSize)
         i++;
     }
 
-    printVector(arr, 8);
+    printVector(arr, originalVectorSize); // Print after merging
 }
 
-void mergeSort(int *vector, int start, int end, int originalVectorSize)
+void mergeSortVector(int *vector, int start, int end, int originalVectorSize)
 {
     if (start < end)
     {
         int mid = (start + end) / 2;
 
-        mergeSort(vector, start, mid, originalVectorSize);
+        // Recursively sort left and right halves
+        mergeSortVector(vector, start, mid, originalVectorSize);
+        mergeSortVector(vector, mid + 1, end, originalVectorSize);
 
-        mergeSort(vector, mid + 1, end, originalVectorSize);
-
-        merge(vector, start, end, originalVectorSize);
+        // Merge the sorted halves
+        mergeVector(vector, start, end, originalVectorSize);
     }
 }
 
-int randomizedPartition(int *vector, int start, int end, int originalVectorSize)
+int partitionVector(int *vector, int start, int end, int originalVectorSize)
 {
-    int pivot = vector[end - 1];
+    int pivot = vector[end - 1]; // Choose the last element as the pivot
     int pIndex = start;
 
     for (size_t i = start; i < end - 1; i++)
     {
+        // Place elements smaller than pivot to the left
         if (vector[i] <= pivot)
         {
             swap(vector + i, vector + pIndex);
             pIndex++;
         }
     }
+    // Place the pivot in its correct position
     swap(vector + pIndex, vector + end - 1);
     printVector(vector, originalVectorSize);
     return pIndex;
 }
 
-void quickSort(int *vector, int start, int end, int originalVectorSize)
+void quickSortVector(int *vector, int start, int end, int originalVectorSize)
 {
     if (start < end)
     {
-        int pIndex = randomizedPartition(vector, start, end, originalVectorSize);
-        quickSort(vector, start, pIndex, originalVectorSize);
-        quickSort(vector, pIndex + 1, end, originalVectorSize);
+        // Partition the array and get the pivot index
+        int pIndex = partitionVector(vector, start, end, originalVectorSize);
+        quickSortVector(vector, start, pIndex, originalVectorSize);   // Sort left half
+        quickSortVector(vector, pIndex + 1, end, originalVectorSize); // Sort right half
     }
 }
 
-void combSort(int *vector, int vectorSize, int gap)
+void combSortVector(int *vector, int vectorSize, int gap)
 {
     while (gap >= vectorSize)
     {
@@ -231,6 +244,7 @@ void combSort(int *vector, int vectorSize, int gap)
         printf("Iteration number: %d | ", iterationNumber + 1);
         for (size_t i = 0; i + gap < vectorSize; i++)
         {
+            // Swap elements if they are in the wrong order
             if (vector[i] > vector[i + gap])
             {
                 swap(vector + i, vector + i + gap);
@@ -238,10 +252,11 @@ void combSort(int *vector, int vectorSize, int gap)
             }
             nbComp++;
         }
-        gap--;
+        gap--; // Decrease the gap
         iterationNumber++;
         printVector(vector, vectorSize);
     } while (gap > 0);
 
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("\n");
 }

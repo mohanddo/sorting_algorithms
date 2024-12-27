@@ -1,10 +1,10 @@
 void printVector(int *vector, int vectorSize);
 void swap(int *x, int *y);
-void selectionSort(int *vector, int vectorSize);
-void bubbleSort(int *vector, int vectorSize);
-void insertionSort(int *vector, int vectorSize);
-void merge(int *arr, int start, int end, int originalVectorSize);
-void mergeSort(int *vector, int start, int end, int originalVectorSize);
-int randomizedPartition(int *vector, int start, int end, int originalVectorSize);
-void quickSort(int *vector, int start, int end, int originalVectorSize);
-void combSort(int *vector, int vectorSize, int gap);
+void selectionSortVector(int *vector, int vectorSize);
+void bubbleSortVector(int *vector, int vectorSize);
+void insertionSortVector(int *vector, int vectorSize);
+void mergeVector(int *arr, int start, int end, int originalVectorSize);
+void mergeSortVector(int *vector, int start, int end, int originalVectorSize);
+int partitionVector(int *vector, int start, int end, int originalVectorSize);
+void quickSortVector(int *vector, int start, int end, int originalVectorSize);
+void combSortVector(int *vector, int vectorSize, int gap);
