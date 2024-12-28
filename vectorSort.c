@@ -10,12 +10,12 @@ void selectionSortVector(int *vector, int vectorSize)
     int nbComp, nbPerm;
     nbComp = nbPerm = 0;
 
-    for (size_t i = 0; i < vectorSize - 1; i++)
+    for (int i = 0; i < vectorSize - 1; i++)
     {
-        printf("Iteration number: %ld | ", i + 1);
+        printf("Iteration number: %d | ", i + 1);
 
         int minIndex = i; // Assume the first unsorted element is the smallest
-        for (size_t j = i + 1; j < vectorSize; j++)
+        for (int j = i + 1; j < vectorSize; j++)
         {
             // Update minIndex if a smaller element is found
             if (vector[j] < vector[minIndex])
@@ -41,11 +41,11 @@ void bubbleSortVector(int *vector, int vectorSize)
     int nbComp, nbPerm;
     nbComp = nbPerm = 0;
 
-    for (size_t i = 0; i < vectorSize; i++)
+    for (int i = 0; i < vectorSize; i++)
     {
-        printf("Iteration number: %ld | ", i + 1);
+        printf("Iteration number: %d | ", i + 1);
         bool sorted = true; // Check if the array is already sorted
-        for (size_t j = 0; j < vectorSize - i - 1; j++)
+        for (int j = 0; j < vectorSize - i - 1; j++)
         {
             // Swap if elements are in the wrong order
             if (vector[j] > vector[j + 1])
@@ -73,9 +73,9 @@ void insertionSortVector(int *vector, int vectorSize)
     int nbComp, nbPerm;
     nbComp = nbPerm = 0;
 
-    for (size_t i = 1; i < vectorSize; i++)
+    for (int i = 1; i < vectorSize; i++)
     {
-        printf("Iteration number: %ld | ", i);
+        printf("Iteration number: %d | ", i);
 
         int pos = i;
         int temp = vector[i]; // Store the current element temporarily
@@ -183,7 +183,7 @@ int partitionVector(int *vector, int start, int end, int originalVectorSize)
     int pivot = vector[end - 1]; // Choose the last element as the pivot
     int pIndex = start;
 
-    for (size_t i = start; i < end - 1; i++)
+    for (int i = start; i < end - 1; i++)
     {
         // Place elements smaller than pivot to the left
         if (vector[i] <= pivot)
@@ -222,7 +222,7 @@ void combSortVector(int *vector, int vectorSize, int gap)
     do
     {
         printf("Iteration number: %d | ", iterationNumber + 1);
-        for (size_t i = 0; i + gap < vectorSize; i++)
+        for (int i = 0; i + gap < vectorSize; i++)
         {
             // Swap elements if they are in the wrong order
             if (vector[i] > vector[i + gap])

@@ -90,7 +90,7 @@ int main()
 {
     srand(time(NULL));
 
-    // Measure time taken by Quick Sort
+    // Measure CPU time taken by Bubble Sort
     clock_t start, end;
     double cpu_time_used;
 

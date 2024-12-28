@@ -22,7 +22,7 @@ void swapMatrix(char *word1, char *word2);
 void fillVectorWithRandomIntegers(int *vector, int vectorSize);
 void fillMatrixWithRandomStrings(char matrix[][20], int matrixSize);
 void displayList(List head);
-void addElementToList(List *head, char data[20]);
-void fillLinkedListWithRandomStrings(List *head, int linkedListLenght);
+void addElementToList(List *head, const char *data);
+void fillLinkedListWithRandomStrings(List *head, int linkedListLength);
 
 #endif
