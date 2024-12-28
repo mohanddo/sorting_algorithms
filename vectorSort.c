@@ -44,7 +44,6 @@ void bubbleSortVector(int *vector, int vectorSize)
     for (size_t i = 0; i < vectorSize; i++)
     {
         printf("Iteration number: %ld | ", i + 1);
-
         bool sorted = true; // Check if the array is already sorted
         for (size_t j = 0; j < vectorSize - i - 1; j++)
         {
@@ -110,14 +109,14 @@ void mergeVector(int *arr, int start, int end, int originalVectorSize)
 
     // Create left and right subarrays
     int leftvectorlenght = mid - start + 1;
-    int leftvector[leftvectorlenght];
+    int *leftvector = (int *)malloc(sizeof(int) * leftvectorlenght);
     for (size_t i = 0; i < leftvectorlenght; i++)
     {
         leftvector[i] = arr[start + i];
     }
 
     int rightvectorlenght = end - mid;
-    int rightvector[rightvectorlenght];
+    int *rightvector = (int *)malloc(sizeof(int) * rightvectorlenght);
     for (size_t i = 0; i < rightvectorlenght; i++)
     {
         rightvector[i] = arr[mid + i + 1];
@@ -157,6 +156,9 @@ void mergeVector(int *arr, int start, int end, int originalVectorSize)
         k++;
         i++;
     }
+
+    free(leftvector);
+    free(rightvector);
 
     printVector(arr, originalVectorSize); // Print after merging
 }
