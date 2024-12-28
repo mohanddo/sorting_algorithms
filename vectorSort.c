@@ -2,29 +2,7 @@
 #include <stdbool.h>
 #include "vectorSort.h"
 #include <stdlib.h>
-
-void printVector(int *vector, int vectorSize)
-{
-    printf("Vector: ");
-    for (size_t i = 0; i < vectorSize; i++)
-    {
-        printf("%d ", vector[i]);
-    }
-    printf("\n");
-}
-
-void swap(int *x, int *y)
-{
-    int temp = *x;
-    *x = *y;
-    *y = temp;
-}
-
-void printnbCompAndnbPerm(int nbComb, int nbPerm)
-{
-    printf("The number of comparisons is: %d\n", nbComb);
-    printf("The number of permutations is: %d\n", nbPerm);
-}
+#include "utils.h"
 
 void selectionSortVector(int *vector, int vectorSize)
 {

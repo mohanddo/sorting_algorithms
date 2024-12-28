@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include "menu.h"
+#include "utils.h"
 
 char chooseTypeOfSorting()
 {
@@ -95,59 +96,30 @@ char chooseSortingAlgorithem()
     return choice;
 }
 
-void fillVectorWithRandomIntegers(int *vector, int vectorSize)
-{
-    for (size_t i = 0; i < vectorSize; i++)
-    {
-        vector[i] = rand() % 100;
-    }
-}
+// int main()
+// {
 
-char *strings[150] = {
-    "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon",
-    "mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tomato", "ugli", "vanilla",
-    "watermelon", "xigua", "yellowfruit", "zucchini", "apricot", "blueberry", "cantaloupe", "dragonfruit", "eaglefruit", "fruitcake",
-    "grapefruit", "huckleberry", "imbe", "jackfruit", "kumquat", "lime", "mulberry", "nectar", "olive", "peach",
-    "plum", "pomegranate", "pear", "pineapple", "papaya", "persimmon", "raspberry", "starfruit", "tangerine", "watermelon",
-    "mangosteen", "blackberry", "grapefruit", "pear", "elderberry", "fig", "gooseberry", "honeydew", "apricot", "tomato",
-    "coconut", "lime", "persimmon", "plum", "date", "starfruit", "apricot", "blueberry", "kiwi", "lemon",
-    "banana", "fig", "cantaloupe", "guava", "pomegranate", "tamarind", "peach", "strawberry", "grape", "cherry",
-    "jackfruit", "honeydew", "grapefruit", "lemon", "lime", "peach", "plum", "blueberry", "elderberry", "raspberry",
-    "citrus", "mango", "quince", "kiwi", "papaya", "pear", "melon", "apple", "cantaloupe", "tomato",
-    "strawberry", "pear", "blueberry", "lime", "apricot", "coconut", "cherry", "honeydew", "plum", "grapefruit"};
+//     srand(time(NULL));
+//     chooseTypeOfSorting();
 
-void fillMatrixWithRandomStrings(char matrix[10][20], int matrixSize)
-{
-    for (size_t i = 0; i < 10; i++)
-    {
-        strcpy(matrix[i], strings[rand() % 100]);
-    }
-}
+//     chooseSortingAlgorithem();
 
-int main()
-{
+//     int vector[20];
+//     fillVectorWithRandomIntegers(vector, 20);
+//     for (size_t i = 0; i < 20; i++)
+//     {
+//         printf("%d ", vector[i]);
+//     }
+//     printf("\n");
 
-    srand(time(NULL));
-    chooseTypeOfSorting();
+//     // char matrix[10][20];
+//     // fillMatrixWithRandomStrings(matrix, 10);
 
-    chooseSortingAlgorithem();
+//     // for (size_t i = 0; i < 10; i++)
+//     // {
+//     //     printf("%s ", matrix[i]);
+//     // }
 
-    int vector[20];
-    fillVectorWithRandomIntegers(vector, 20);
-    for (size_t i = 0; i < 20; i++)
-    {
-        printf("%d ", vector[i]);
-    }
-    printf("\n");
-
-    // char matrix[10][20];
-    // fillMatrixWithRandomStrings(matrix, 10);
-
-    // for (size_t i = 0; i < 10; i++)
-    // {
-    //     printf("%s ", matrix[i]);
-    // }
-
-    // printf("\n");
-    return 0;
-}
+//     // printf("\n");
+//     return 0;
+// }
