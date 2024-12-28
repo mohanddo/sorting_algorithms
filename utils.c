@@ -72,13 +72,12 @@ void fillMatrixWithRandomStrings(char matrix[][20], int matrixSize)
     }
 }
 
-void fillLinkedListWithRandomStrings(List *head, int linkedListLenght)
-{
-    for (size_t i = 0; i < linkedListLenght; i++)
-    {
-        addElementToList(head, strings[rand() % 100]);
+void fillLinkedListWithRandomStrings(List *head, int linkedListLength) {
+    for (size_t i = 0; i < linkedListLength; i++) {
+        addElementToList(head, strings[rand() % linkedListLength]);
     }
 }
+
 
 // Function to print the linked list
 void displayList(List head)
@@ -92,24 +91,25 @@ void displayList(List head)
     printf("\n");
 }
 
-// Function to add elements to the list
-void addElementToList(List *head, char data[20])
-{
+
+void addElementToList(List *head, const char *data) {
     // Allocate the new element
     List newElement = (List)malloc(sizeof(ElementList));
+    if (newElement == NULL) {
+        perror("Failed to allocate memory");
+        exit(EXIT_FAILURE);
+    }
     strcpy(newElement->word, data);
     newElement->next = NULL;
 
-    if (*head == NULL)
-    { // Check if head is NULL
+    if (*head == NULL) { // Check if head is NULL
         *head = newElement;
         return;
     }
 
     List current = *head; // Initialize current with the head of the list
 
-    while (current->next != NULL)
-    {
+    while (current->next != NULL) {
         current = current->next;
     }
     current->next = newElement;

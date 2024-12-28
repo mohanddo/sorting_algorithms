@@ -6,30 +6,31 @@
 // Function to perform insertion sort on a matrix of strings
 void insertionSortMatrice(char matrice[][20], int n)
 {
-    int nbComp, nbPerm;
-    nbComp = nbPerm = 0;
+    int nbComp, nbPerm; // Variables to count comparisons and permutations
+    nbComp = nbPerm = 0; 
 
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++) 
     {
         printf("Iteration number: %d | ", i);
-        char temp[20];
-        strcpy(temp, matrice[i]);
-        int j = i - 1;
+        char temp[20]; 
+        strcpy(temp, matrice[i]); // Copy the current string to temp
+        int j = i - 1; // Set j to the previous element's index
 
-        while (j >= 0 && strcmp(matrice[j], temp) > 0)
+        while (j >= 0 && strcmp(matrice[j], temp) > 0) // Compare temp with each element to find its correct position
         {
-            nbComp++;
-            strcpy(matrice[j + 1], matrice[j]);
-            j--;
-            nbPerm++;
+            nbComp++; 
+            strcpy(matrice[j + 1], matrice[j]); // Shift elements to the right
+            j--; // Move to the previous element
+            nbPerm++; 
         }
-        strcpy(matrice[j + 1], temp);
-        nbPerm++;
+        strcpy(matrice[j + 1], temp); // Insert the temp string in the correct position
+        nbPerm++; 
         displayMatrice(matrice, n); // Display matrix after each iteration for visualization
     }
-    printnbCompAndnbPerm(nbComp, nbPerm);
+    printnbCompAndnbPerm(nbComp, nbPerm); 
     printf("\n");
 }
+
 
 // Function to perform partitioning for quick sort
 int partition(char matrice[][20], int low, int high, int originalSizeMatrix)
