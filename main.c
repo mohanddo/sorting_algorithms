@@ -11,33 +11,34 @@ void sort(int sortingAlgorithme, int structureToSort)
     if (structureToSort == VECTOR_SORT)
     {
 
-        int vector[20];
-        fillVectorWithRandomIntegers(vector, 20);
+        int size = 15 ;
+        int vector[size];
+        fillVectorWithRandomIntegers(vector, size);
 
         switch (sortingAlgorithme)
         {
         case SELECTION_SORT:
-            selectionSortVector(vector, 20);
+            selectionSortVector(vector, size);
             break;
 
         case BUBBLE_SORT:
-            bubbleSortVector(vector, 20);
+            bubbleSortVector(vector, size);
             break;
 
         case INSERTION_SORT:
-            insertionSortVector(vector, 20);
+            insertionSortVector(vector, size);
             break;
 
         case COMB_SORT:
-            combSortVector(vector, 20, 20);
+            combSortVector(vector, size, size);
             break;
 
         case MERGE_SORT:
-            mergeSortVector(vector, 0, 20, 20);
+            mergeSortVector(vector, 0, size, size);
             break;
 
         case QUICK_SORT:
-            quickSortVector(vector, 0, 20, 20);
+            quickSortVector(vector, 0, size, size);
             break;
 
         default:
@@ -68,7 +69,7 @@ void sort(int sortingAlgorithme, int structureToSort)
     else if (structureToSort == LINKED_LIST_SORT)
     {
         List head = NULL;
-        fillLinkedListWithRandomStrings(&head, 20);
+        fillLinkedListWithRandomStrings(&head, 15);
 
         switch (sortingAlgorithme)
         {

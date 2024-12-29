@@ -45,6 +45,7 @@ void bubbleSortList(List head)
     } while (swapped);
 
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("Iteration number: %d | ", iterationNumber );
     printf("\n");
 }
 
@@ -114,5 +115,6 @@ void insertionSortList(List *head)
     free(newHead);
 
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("Iteration number: %d | ", iterationNumber);
     printf("\n");
 }
