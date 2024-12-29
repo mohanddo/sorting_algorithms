@@ -47,7 +47,7 @@ void fillVectorWithRandomIntegers(int *vector, int vectorSize)
 {
     for (size_t i = 0; i < vectorSize; i++)
     {
-        vector[i] = rand() % 100;
+        vector[i] = rand() ;
     }
 }
 

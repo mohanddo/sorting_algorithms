@@ -7,9 +7,10 @@
 #include "utils.h"
 
 int main() {
-    int vector[10] ;
-    List head = NULL;
-    fillVectorWithRandomIntegers(vector,200);
+  int size = 10000 ;
+    int vector[size] ;
+    
+    fillVectorWithRandomIntegers(vector,size);
     
   //  fillLinkedListWithRandomStrings(&head, 50);
 
@@ -19,7 +20,7 @@ int main() {
 
     start = clock();
     //bubbleSortList(head);
-    bubbleSortVector(vector,10);
+    selectionSortVector(vector,size);
     end = clock();
 
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;

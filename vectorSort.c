@@ -4,105 +4,97 @@
 #include <stdlib.h>
 #include "utils.h"
 
-void selectionSortVector(int *vector, int vectorSize)
-{
-    // Number of comparisons and swaps are tracked here
-    int nbComp, nbPerm;
-    nbComp = nbPerm = 0;
+void selectionSortVector(int *vector, int vectorSize) {
+    // Track comparisons, swaps, and iterations
+    int nbComp = 0, nbPerm = 0, nbIter = 0;
 
-    for (int i = 0; i < vectorSize - 1; i++)
-    {
-        printf("Iteration number: %d | ", i + 1);
+    for (int i = 0; i < vectorSize - 1; i++) {
+        nbIter++; // Increment the iteration count
+        printf("Iteration number: %d\n", nbIter);
 
         int minIndex = i; // Assume the first unsorted element is the smallest
-        for (int j = i + 1; j < vectorSize; j++)
-        {
+        for (int j = i + 1; j < vectorSize; j++) {
             // Update minIndex if a smaller element is found
-            if (vector[j] < vector[minIndex])
-            {
+            nbComp++; // Count the comparison
+            if (vector[j] < vector[minIndex]) {
                 minIndex = j;
             }
-            nbComp++; // Count the comparison
         }
         // Swap the smallest found element with the current position
         swap(vector + i, vector + minIndex);
         nbPerm++;                        // Count the swap
-        printVector(vector, vectorSize); // Print the vector after each iteration
+       printVector(vector, vectorSize); // Print the vector after each iteration
     }
 
-    // Print the total number of comparisons and swaps
+    // Print the total number of comparisons, swaps, and iterations
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("Total iterations: %d\n", nbIter);
     printf("\n");
 }
 
-void bubbleSortVector(int *vector, int vectorSize)
-{
-    // Track number of comparisons and swaps
-    int nbComp, nbPerm;
-    nbComp = nbPerm = 0;
 
-    for (int i = 0; i < vectorSize; i++)
-    {
-        printf("Iteration number: %d | ", i + 1);
+
+void bubbleSortVector(int *vector, int vectorSize) {
+    // Track number of comparisons, swaps, and iterations
+    int nbComp = 0, nbPerm = 0, nbIter = 0;
+
+    for (int i = 0; i < vectorSize; i++) {
+        nbIter++; // Increment the iteration count
+        printf("Iteration number: %d\n", nbIter);
 
         bool sorted = true; // Check if the array is already sorted
-        for (int j = 0; j < vectorSize - i - 1; j++)
-        {
+        for (int j = 0; j < vectorSize - i - 1; j++) {
             // Swap if elements are in the wrong order
-            if (vector[j] > vector[j + 1])
-            {
-                swap(vector + j + 1, vector + j);
+            if (vector[j] > vector[j + 1]) {
+                swap(&vector[j], &vector[j + 1]);
                 nbPerm++;       // Count the swap
                 sorted = false; // Array is not sorted yet
             }
             nbComp++; // Count the comparison
         }
-        printVector(vector, vectorSize); // Print after each iteration
-        if (sorted)                      // Stop early if the array is sorted
-        {
+         printVector(vector, vectorSize); // Print after each iteration
+        if (sorted) { // Stop early if the array is sorted
             break;
         }
     }
-
-    printnbCompAndnbPerm(nbComp, nbPerm);
-    printf("\n");
+    // Print total number of comparisons, swaps, and iterations
+    printf("Total comparisons: %d\n", nbComp);
+    printf("Total permutations: %d\n", nbPerm);
+    printf("Total iterations: %d\n", nbIter);
 }
 
-void insertionSortVector(int *vector, int vectorSize)
-{
-    // Track comparisons and swaps
-    int nbComp, nbPerm;
-    nbComp = nbPerm = 0;
 
-    for (int i = 1; i < vectorSize; i++)
-    {
-        printf("Iteration number: %d | ", i);
+void insertionSortVector(int *vector, int vectorSize) {
+    // Track comparisons, swaps, and iterations
+    int nbComp = 0, nbPerm = 0, nbIter = 0;
+
+    for (int i = 1; i < vectorSize; i++) {
+        nbIter++; // Increment the iteration count
+        printf("Iteration number: %d\n", nbIter);
 
         int pos = i;
         int temp = vector[i]; // Store the current element temporarily
-        for (int j = i - 1; j >= 0; j--)
-        {
-            // Shift elements until the correct position is found
-            if (vector[i] < vector[j])
-            {
-                pos = j;
-            }
+        for (int j = i - 1; j >= 0; j--) {
             nbComp++; // Count comparisons
-        }
-
-        // Shift elements to make space for the current element
-        for (int k = i - 1; k >= pos; k--)
-        {
-            vector[k + 1] = vector[k];
+            if (vector[j] > temp) {
+                vector[j + 1] = vector[j];
+                nbPerm++; // Count swaps
+                pos = j;
+            } else {
+                break;
+            }
         }
 
         vector[pos] = temp; // Place the element in the correct position
-        nbPerm++;           // Count the placement as a swap
-        printVector(vector, vectorSize);
+        printVector(vector, vectorSize); // Print the vector after each iteration
     }
-    printnbCompAndnbPerm(nbComp, nbPerm);
-    printf("\n");
+
+    // Print total number of comparisons, swaps, and iterations
+    printf("Total comparisons: %d\n", nbComp);
+    printf("Total permutations: %d\n", nbPerm);
+    printf("Total iterations: %d\n", nbIter);
 }
+
 
 void mergeVector(int *arr, int start, int end, int originalVectorSize)
 {
@@ -236,5 +228,6 @@ void combSortVector(int *vector, int vectorSize, int gap)
     } while (gap > 0);
 
     printnbCompAndnbPerm(nbComp, nbPerm);
+    printf("iteration number : %d",iterationNumber);
     printf("\n");
 }

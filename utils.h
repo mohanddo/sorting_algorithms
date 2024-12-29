@@ -24,5 +24,4 @@ void fillMatrixWithRandomStrings(char matrix[][20], int matrixSize);
 void displayList(List head);
 void addElementToList(List *head, const char *data);
 void fillLinkedListWithRandomStrings(List *head, int linkedListLength);
-
 #endif
