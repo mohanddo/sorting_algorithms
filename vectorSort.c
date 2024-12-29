@@ -102,15 +102,15 @@ void mergeVector(int *arr, int start, int end, int originalVectorSize)
 
     // Create left and right subarrays
     int leftvectorlenght = mid - start + 1;
-    int leftvector[leftvectorlenght];
-    for (int i = 0; i < leftvectorlenght; i++)
+    int *leftvector = (int *)malloc(sizeof(int) * leftvectorlenght);
+    for (size_t i = 0; i < leftvectorlenght; i++)
     {
         leftvector[i] = arr[start + i];
     }
 
     int rightvectorlenght = end - mid;
-    int rightvector[rightvectorlenght];
-    for (int i = 0; i < rightvectorlenght; i++)
+    int *rightvector = (int *)malloc(sizeof(int) * rightvectorlenght);
+    for (size_t i = 0; i < rightvectorlenght; i++)
     {
         rightvector[i] = arr[mid + i + 1];
     }
@@ -149,6 +149,9 @@ void mergeVector(int *arr, int start, int end, int originalVectorSize)
         k++;
         i++;
     }
+
+    free(leftvector);
+    free(rightvector);
 
     printVector(arr, originalVectorSize); // Print after merging
 }

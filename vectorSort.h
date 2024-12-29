@@ -1,6 +1,7 @@
 #ifndef VECTORSORT_H
 #define VECTORSORT_H
-void selectionSortVector(int *vector, int vectorSize) ;
+
+void selectionSortVector(int *vector, int vectorSize);
 void bubbleSortVector(int *vector, int vectorSize);
 void insertionSortVector(int *vector, int vectorSize);
 void mergeVector(int *arr, int start, int end, int originalVectorSize);
