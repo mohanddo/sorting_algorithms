@@ -32,8 +32,6 @@ void selectionSortVector(int *vector, int vectorSize) {
     printf("\n");
 }
 
-
-
 void bubbleSortVector(int *vector, int vectorSize) {
     // Track number of comparisons, swaps, and iterations
     int nbComp = 0, nbPerm = 0, nbIter = 0;
@@ -62,7 +60,6 @@ void bubbleSortVector(int *vector, int vectorSize) {
     printf("Total permutations: %d\n", nbPerm);
     printf("Total iterations: %d\n", nbIter);
 }
-
 
 void insertionSortVector(int *vector, int vectorSize) {
     // Track comparisons, swaps, and iterations
