@@ -51,7 +51,10 @@ void fillVectorWithRandomIntegers(int *vector, int vectorSize)
     }
 }
 
-char *strings[150] = {
+
+void fillMatrixWithRandomStrings(char matrix[][20], int matrixSize)
+{
+    char *strings[150] = {
     "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon",
     "mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tomato", "ugli", "vanilla",
     "watermelon", "xigua", "yellowfruit", "zucchini", "apricot", "blueberry", "cantaloupe", "dragonfruit", "eaglefruit", "fruitcake",
@@ -64,8 +67,6 @@ char *strings[150] = {
     "citrus", "mango", "quince", "kiwi", "papaya", "pear", "melon", "apple", "cantaloupe", "tomato",
     "strawberry", "pear", "blueberry", "lime", "apricot", "coconut", "cherry", "honeydew", "plum", "grapefruit"};
 
-void fillMatrixWithRandomStrings(char matrix[][20], int matrixSize)
-{
     for (size_t i = 0; i < matrixSize; i++)
     {
         strcpy(matrix[i], strings[rand() % 100]);
@@ -73,6 +74,19 @@ void fillMatrixWithRandomStrings(char matrix[][20], int matrixSize)
 }
 
 void fillLinkedListWithRandomStrings(List *head, int linkedListLength) {
+    const char *strings[150] = {
+    "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon",
+    "mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tomato", "ugli", "vanilla",
+    "watermelon", "xigua", "yellowfruit", "zucchini", "apricot", "blueberry", "cantaloupe", "dragonfruit", "eaglefruit", "fruitcake",
+    "grapefruit", "huckleberry", "imbe", "jackfruit", "kumquat", "lime", "mulberry", "nectar", "olive", "peach",
+    "plum", "pomegranate", "pear", "pineapple", "papaya", "persimmon", "raspberry", "starfruit", "tangerine", "watermelon",
+    "mangosteen", "blackberry", "grapefruit", "pear", "elderberry", "fig", "gooseberry", "honeydew", "apricot", "tomato",
+    "coconut", "lime", "persimmon", "plum", "date", "starfruit", "apricot", "blueberry", "kiwi", "lemon",
+    "banana", "fig", "cantaloupe", "guava", "pomegranate", "tamarind", "peach", "strawberry", "grape", "cherry",
+    "jackfruit", "honeydew", "grapefruit", "lemon", "lime", "peach", "plum", "blueberry", "elderberry", "raspberry",
+    "citrus", "mango", "quince", "kiwi", "papaya", "pear", "melon", "apple", "cantaloupe", "tomato",
+    "strawberry", "pear", "blueberry", "lime", "apricot", "coconut", "cherry", "honeydew", "plum", "grapefruit"};
+
     for (size_t i = 0; i < linkedListLength; i++) {
         addElementToList(head, strings[rand() % linkedListLength]);
     }

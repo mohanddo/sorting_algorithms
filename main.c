@@ -10,6 +10,7 @@ void sort(int sortingAlgorithme, int structureToSort)
 {
     if (structureToSort == VECTOR_SORT)
     {
+
         int vector[20];
         fillVectorWithRandomIntegers(vector, 20);
 
@@ -66,7 +67,7 @@ void sort(int sortingAlgorithme, int structureToSort)
     }
     else if (structureToSort == LINKED_LIST_SORT)
     {
-        List head;
+        List head = NULL;
         fillLinkedListWithRandomStrings(&head, 20);
 
         switch (sortingAlgorithme)
@@ -95,7 +96,7 @@ int main()
     double cpu_time_used;
 
     int structureToSort = chooseTypeOfSorting();
-    int sortingAlgorithem = chooseSortingAlgorithem();
+    int sortingAlgorithem = chooseSortingAlgorithm(structureToSort);
 
     start = clock();
     sort(sortingAlgorithem, structureToSort);

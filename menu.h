@@ -13,6 +13,6 @@
 #define COMB_SORT 5
 
 int chooseTypeOfSorting();
-int chooseSortingAlgorithem();
+int chooseSortingAlgorithm(int structureToSort);
 
 #endif

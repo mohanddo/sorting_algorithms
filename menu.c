@@ -55,62 +55,68 @@ int chooseTypeOfSorting()
     return '\0';
 }
 
-int chooseSortingAlgorithem()
-{
+int chooseSortingAlgorithm(int structureToSort) {
     char choice;
-    printf("Select the sorting algorithme\n");
-    printf("0. Selection Sort, Press 'S' or 's'\n");
-    printf("1. Bubble Sort, Press 'B' or 'b'\n");
-    printf("2. Insertion Sort, Press 'I' or 'i'\n");
-    printf("3. Merge Sort, Press 'M' or 'm'\n");
-    printf("4. Quick Sort, Press 'Q' or 'q'\n");
-    printf("5. Comp Sort, Press 'C' or 'c'\n");
+    printf("Select the sorting algorithm\n");
+
+    if (structureToSort == VECTOR_SORT) {
+        printf("0. Selection Sort, Press 'S' or 's'\n");
+        printf("1. Bubble Sort, Press 'B' or 'b'\n");
+        printf("2. Insertion Sort, Press 'I' or 'i'\n");
+        printf("3. Merge Sort, Press 'M' or 'm'\n");
+        printf("4. Quick Sort, Press 'Q' or 'q'\n");
+        printf("5. Comp Sort, Press 'C' or 'c'\n");
+    } else {
+        if(structureToSort == MATRIX_SORT){
+            printf("1. Insertion Sort, Press 'I' or 'i'\n");
+            printf("2. Quick Sort, Press 'Q' or 'q'\n");
+        }else{
+            printf("1. Insertion Sort, Press 'I' or 'i'\n");
+            printf("2. Bubble Sort, Press 'B' or 'b'\n");
+        }
+    }
+
     printf("Enter your choice: ");
 
-    do
-    {
+    do {
         choice = getchar();
         flush_stdin();
-        switch (choice)
-        {
-        case 's':
-        case 'S':
-            printf("You choose Selection Sort\n");
-            printf("\n");
-            return SELECTION_SORT;
-            break;
-        case 'b':
-        case 'B':
-            printf("You choose Bubble Sort\n");
-            printf("\n");
-            return BUBBLE_SORT;
-            break;
-        case 'i':
-        case 'I':
-            printf("You choose Insertion Sort\n");
-            printf("\n");
-            return INSERTION_SORT;
-            break;
-        case 'm':
-        case 'M':
-            printf("You choose Merge Sort\n");
-            printf("\n");
-            return MERGE_SORT;
-            break;
-        case 'q':
-        case 'Q':
-            printf("You choose Quick Sort\n");
-            printf("\n");
-            return QUICK_SORT;
-            break;
-        case 'c':
-        case 'C':
-            printf("You choose Comp Sort\n");
-            printf("\n");
-            return COMB_SORT;
-            break;
-        default:
-            printf("Invalid choice. Enter again: ");
+        switch (choice) {
+            case 's':
+            case 'S':
+                if (structureToSort == VECTOR_SORT) {
+                    printf("You chose Selection Sort\n");
+                    return SELECTION_SORT;
+                }
+                break;
+            case 'b':
+            case 'B':
+                printf("You chose Bubble Sort\n");
+                return BUBBLE_SORT;
+            case 'i':
+            case 'I':
+                printf("You chose Insertion Sort\n");
+                return INSERTION_SORT;
+            case 'm':
+            case 'M':
+                if (structureToSort == VECTOR_SORT) {
+                    printf("You chose Merge Sort\n");
+                    return MERGE_SORT;
+                }
+                break;
+            case 'q':
+            case 'Q':
+                printf("You chose Quick Sort\n");
+                return QUICK_SORT;
+            case 'c':
+            case 'C':
+                if (structureToSort == VECTOR_SORT) {
+                    printf("You chose Comp Sort\n");
+                    return COMB_SORT;
+                }
+                break;
+            default:
+                printf("Invalid choice. Enter again: ");
         }
     } while (choice != 's' && choice != 'S' && choice != 'M' &&
              choice != 'm' && choice != 'C' && choice != 'c' &&
